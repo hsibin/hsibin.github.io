@@ -115,6 +115,12 @@
     <content type="html"><![CDATA[<h1 id="路由器综合测试报告"><a href="#路由器综合测试报告" class="headerlink" title="路由器综合测试报告"></a>路由器综合测试报告</h1><h2 id="测试概要"><a href="#测试概要" class="headerlink" title="测试概要"></a>测试概要</h2><p>本测试报告主要以路由器的性能以及结合用户的实际使用情况为标准挑选出综合最优的路由器。</p><h2 id="测试内容"><a href="#测试内容" class="headerlink" title="测试内容"></a>测试内容</h2><p>在室内不同位置模拟用户日常使用对路由器进行信号和网速测试。</p><ul><li>2.4G频段路由器性能测试<br><img src="/img/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%BC%E5%90%88%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/%E5%9B%BE%E7%89%871.png" alt="2.4G频段"></li><li>5G频段路由器性能测试<br><img src="/img/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%BC%E5%90%88%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A/%E5%9B%BE%E7%89%872.png" alt="5G频段"></li></ul><h2 id="测试结果分析"><a href="#测试结果分析" class="headerlink" title="测试结果分析"></a>测试结果分析</h2><p>在路由器的一般使用场景中，可以分析出以下几点</p><ol><li>用户绝大多数时候都不会在距离路由器1m内网上冲浪，那么在1m内路由器的性能不那么重要；</li><li>用户通常会将路由器摆放在客厅或者卧室，那么近距离使用效果和信号穿墙情况是评判路由器性能的重要指标，四款路由器中，中兴ZXHN-E2623（5G频段）在室内5米内无阻挡、室内10米内无阻挡和室内8米内有墙阻挡都表现最好；</li><li>室内11米有门墙阻挡是用来模拟用户在卫生间和厨房的使用场景，中兴ZXHN-E2623也有不错的表现，可以流畅的观看4K视频和游玩网络游戏；</li><li>创维SK-WR9651X在2.4G频段表现最为出色，但现如今几乎所有的具有WALN功能的设备都支持5G频段的WiFi，并且根据信号强度来看，中兴ZXHN-E2623（5G频段）的WiFi足以覆盖一个120㎡的套房；</li></ol><h2 id="用户感知分析"><a href="#用户感知分析" class="headerlink" title="用户感知分析"></a>用户感知分析</h2><p>根据路由器的测试结果来看，这四款路由器都可以覆盖用户的绝大多数需求。有部分用户在选择路由器时会更关注性能之外的部分比如外观美观度、品牌认可度、易用程度、价格是否亲民等方面。<br>中兴ZXHN-E2623和华为PSDN-TC31都是白色方正外观，更容易被大多数人接受，同时这两款路由器相较于另外两款路由器有着更高的品牌认可度；华为PSDN-TC31搭载鸿蒙系统，支持智能家居控制和智能场景联动，使用华为手机的用户可能会更倾向于这款路由器；华为PSDN-TC31和创维SK-WR9651X都有相较于另外两款路由器更简单的后台控制。</p><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>如果只从性能方面来考虑的话，那么中兴ZXHN-E2623无疑是这几款路由器中的最佳选择，适合绝大多数家庭使用，但在实际中用户可能会根据自身情况做出适合他们自己的选择。</p>]]></content>
     
     
+    <categories>
+      
+      <category>网络</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -864,7 +870,7 @@
     <link href="/2023/08/15/%E4%BF%A1%E6%81%AF%E9%80%9A%E4%BF%A1%E8%A1%8C%E4%B8%9A%E5%8F%91%E5%B1%95%E8%A7%84%E5%88%92/"/>
     <url>/2023/08/15/%E4%BF%A1%E6%81%AF%E9%80%9A%E4%BF%A1%E8%A1%8C%E4%B8%9A%E5%8F%91%E5%B1%95%E8%A7%84%E5%88%92/</url>
     
-    <content type="html"><![CDATA[<div class="row">    <embed src="/pdf/“十四五”信息通信行业发展规划.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
+    <content type="html"><![CDATA[<h1 id="“十四五”信息通信行业发展规划"><a href="#“十四五”信息通信行业发展规划" class="headerlink" title="“十四五”信息通信行业发展规划"></a>“十四五”信息通信行业发展规划</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">工业和信息化部<br></code></pre></td></tr></table></figure><div class="row">    <embed src="/pdf/“十四五”信息通信行业发展规划.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
     
     
     <categories>
