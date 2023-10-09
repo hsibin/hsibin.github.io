@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/%E8%BF%90%E8%90%A5%E5%95%86%E7%9C%81%E5%B8%82%E5%8E%BF%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BB%87/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.jpg">
 <meta property="article:published_time" content="2023-09-19T03:42:19.000Z">
-<meta property="article:modified_time" content="2023-10-09T02:35:27.963Z">
+<meta property="article:modified_time" content="2023-10-09T02:43:25.018Z">
 <meta property="article:author" content="ssubin">
 <meta property="article:tag" content="网络">
 <meta property="article:tag" content="移动">
@@ -264,7 +264,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -335,8 +335,14 @@
 <li><code>ODN</code>(Optical Distribution Network)，光配线网，是 OLT 和 ONU 之间的光传输物理通道，主要功能是完成光信号的双向传输，通常由光纤光缆、光连接器、光分路器以及安装连接这些器件的配套设备组成，其中最重要的部件是分光器。<br><img src="/img/%E8%BF%90%E8%90%A5%E5%95%86%E7%9C%81%E5%B8%82%E5%8E%BF%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BB%87/ODN.jpg" srcset="/img/loading.gif" lazyload alt="ODN设备"></li>
 </ol>
 <h2 id="传输网"><a href="#传输网" class="headerlink" title="传输网"></a>传输网</h2><p>传输网是我们整个通信网络的底座，负责把各地的家庭用户、政企用户和数据中心连接起来。它也是互联网的主干。整个传输网，分别是骨干网和城域网。<br>骨干网，又分为国家骨干网（一干）和省级骨干网（二干）。<br>城域网<code>MAN</code>(Metropolitan Area Network),就是单个城市范围内的通信网络。城域网也有进一步细分，分为三层：核心层、汇聚层、接入层。</p>
-<p>graph TD;<br>    国家骨干网–&gt;省级骨干网;<br>    省级骨干网–&gt;城域网;<br>    城域网–&gt;核心层;<br>    城域网–&gt;汇聚层;<br>    城域网–&gt;接入层;</p>
-<p><strong>汇聚层和接入层</strong><br><img src="/img/%E8%BF%90%E8%90%A5%E5%95%86%E7%9C%81%E5%B8%82%E5%8E%BF%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BB%87/PON%E7%B3%BB%E7%BB%9F.jpg" srcset="/img/loading.gif" lazyload alt="PON网络"><br>PON，就是把一根光纤变成N根光纤，实现千家万户的“光连接”，它只管光，只负责把光送到用户家中。<br>BRAS负责认证鉴权、用户管理、数据流转发等业务操作(通常BRAS所在层被称为业务控制层)<br><img src="/img/%E8%BF%90%E8%90%A5%E5%95%86%E7%9C%81%E5%B8%82%E5%8E%BF%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BB%87/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%842.jpg" srcset="/img/loading.gif" lazyload alt="网络结构2"></p>
+<pre><code class=" mermaid">graph TD;
+    国家骨干网--&gt;省级骨干网;
+    省级骨干网--&gt;城域网;
+    城域网--&gt;核心层;
+    城域网--&gt;汇聚层;
+    城域网--&gt;接入层;
+</code></pre>
+<p><strong>汇聚层和接入层</strong><br><img src="/img/%E8%BF%90%E8%90%A5%E5%95%86%E7%9C%81%E5%B8%82%E5%8E%BF%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BB%87/PON%E7%B3%BB%E7%BB%9F.jpg" srcset="/img/loading.gif" lazyload alt="PON网络"><br>PON，就是把一根光纤变成N根光纤，实现千家万户的“光连接”，它只管光，只负责把光送到用户家中。<br>BRAS负责认证鉴权、用户管理、数据流转发等业务操作(通常BRAS所在层被称为业务控制层)<br><img src="/img/%E8%BF%90%E8%90%A5%E5%95%86%E7%9C%81%E5%B8%82%E5%8E%BF%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BB%87/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%842.jpg" srcset="/img/loading.gif" lazyload alt="网络结构2"><br>其中<code>CR：Core Router</code>，核心路由器、<code>SR：Service Router</code>，业务路由器、<code>SW：Switch</code>，交换机</p>
 
                 
               </div>
