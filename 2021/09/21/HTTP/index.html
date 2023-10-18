@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e3f1657c-80fc-4dfa-9643-bf51abd201c6.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/_u4E0B_u8F7D.png">
 <meta property="article:published_time" content="2021-09-21T04:03:34.000Z">
-<meta property="article:modified_time" content="2023-10-18T06:09:50.697Z">
+<meta property="article:modified_time" content="2023-10-18T07:51:34.895Z">
 <meta property="article:author" content="ssubin">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary_large_image">
@@ -264,7 +264,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          16k 字
         
       </span>
     
@@ -275,7 +275,7 @@
         
         
         
-          123 分钟
+          134 分钟
         
       </span>
     
@@ -1004,6 +1004,32 @@
 <li>在使用 XMLHttpRequest 的 POST 方法时，浏览器会先发送 Header 再发送 Data。但并不是所有浏览器会这么做，例如火狐就不会。</li>
 <li>而 GET 方法 Header 和 Data 会一起发送。</li>
 </ul>
+<h2 id="九、HTTP请求历程"><a href="#九、HTTP请求历程" class="headerlink" title="九、HTTP请求历程"></a>九、HTTP请求历程</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ol>
+<li>浏览器进行DNS域名解析，得到对应的IP地址</li>
+<li>根据这个IP，找到对应的服务器建立连接（三次握手）</li>
+<li>建立TCP连接后发起HTTP请求（一个完整的http请求报文）</li>
+<li>服务器响应HTTP请求，浏览器得到html代码（服务器如何响应）</li>
+<li>浏览器解析html代码，并请求html代码中的资源（如js、css、图片等）</li>
+<li>浏览器对页面进行渲染呈现给用户</li>
+<li>服务器关闭TCP连接（四次挥手）</li>
+</ol>
+<h3 id="过程详解"><a href="#过程详解" class="headerlink" title="过程详解"></a>过程详解</h3><ol>
+<li>DNS解析</li>
+</ol>
+<ul>
+<li>首先会搜索浏览器自身的DNS缓存（缓存时间比较短，大概只有1分钟，且只能容纳1000条缓存）</li>
+<li>如果浏览器自身的缓存里面没有找到，那么浏览器会搜索系统自身的DNS缓存</li>
+<li>如果还没有找到，那么尝试从 hosts文件里面去找</li>
+<li>在前面三个过程都没获取到的情况下，浏览器就会发起一个DNS的系统调用，就会向本地配置的首选DNS服务器（一般是电信运营商提供的，也可以使用像Google提供的DNS服务器）发起域名解析请求（通过的是UDP协议向DNS的53端口发起请求，这个请求是递归的请求，也就是运营商的DNS服务器必须得提供给我们该域名的IP地址）</li>
+</ul>
+<ol start="2">
+<li>TCP三次握手<br>三次握手完成之后这个TCP连接就进入状态，就可以发起http请求了。</li>
+<li>发起HTTP请求<br>HTTP是一个客户端和服务器端请求和应答的标准（TCP）。客户端是终端用户，服务器端是网站。通过使用Web浏览器、网络爬虫或者其它的工具，客户端发起一个到服务器上指定端口（默认端口为80）的HTTP请求。</li>
+<li>服务器响应HTTP请求<br>接收到HTTP请求之后，就轮到负载均衡登场了，它位于网站的最前端，把短时间内较高的访问量分摊到不同机器上处理。负载均衡方案有软件、硬件两种。软件方案常见的就是NGINX了。<br>Nginx的作用主要有两个1，处理静态文件请求，2转发请求给后端服务器。然后后端服务器查询数据库返回数据。数据返回给客户端仍然通过HTTP协议传输。<br>HTTP响应报文主要由状态行、响应头部、空行以及响应数据组成。</li>
+<li>浏览器解析<br>浏览器拿到index.html文件后，就开始解析其中的html代码，遇到js&#x2F;css&#x2F;image等静态资源时，就向服务器端去请求下载（会使用多线程下载，每个浏览器的线程数不一样），这个时候就用上keep-alive特性了，建立一次HTTP连接，可以请求多个资源，下载资源的顺序就是按照代码里的顺序，但是由于每个资源大小不一样，而浏览器又多线程请求请求资源，所以从下图看出，这里显示的顺序并不一定是代码里面的顺序。<br>浏览器在请求静态资源时（在未过期的情况下），向服务器端发起一个http请求（询问自从上一次修改时间到现在有没有对资源进行修改），如果服务器端返回304状态码（告诉浏览器服务器端没有修改），那么浏览器会直接读取本地的该资源的缓存文件。</li>
+<li>浏览器进行页面渲染<br>最后，浏览器利用自己内部的工作机制，把请求的静态资源和html代码进行渲染，渲染之后呈现给用户，浏览器是一个边解析边渲染的过程。<br>首先浏览器解析HTML文件构建DOM树，然后解析CSS文件构建渲染树，等到渲染树构建完成后，浏览器开始布局渲染树并将其绘制到屏幕上。</li>
+<li>服务器关闭TCP连接<br>一般情况下，一旦Web服务器向浏览器发送了请求数据，它就要关闭TCP连接。而关闭TCP连接就需要进行<strong>四次挥手</strong>。<br>中断连接端可以是客户端，也可以是服务器端。<br>Power by <a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes">CS-NOTES</a></li>
+</ol>
 
                 
               </div>
