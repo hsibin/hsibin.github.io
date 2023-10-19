@@ -24,21 +24,8 @@
 <meta property="og:description" content="HTTP一 、基础概念请求和响应报文客户端发送一个请求报文给服务器，服务器根据请求报文中的信息进行处理，并将处理结果放入响应报文中返回给客户端。 请求报文结构：  第一行是包含了请求方法、URL、协议版本； 接下来的多行都是请求首部 Header，每个首部都有一个首部名称，以及对应的值。 一个空行用来分隔首部和内容主体 Body 最后是请求的内容主体  12345678910111213GET h">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/8441b2c4-dca7-4d6b-8efb-f22efccaf331.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/dc00f70e-c5c8-4d20-baf1-2d70014a97e3.jpg">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/HTTP1_x_Connections.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/a314bb79-5b18-4e63-a976-3448bffa6f1b.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/2d09a847-b854-439c-9198-b29c65810944.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/ssl-offloading.jpg">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/7fffa4b8-b36d-471f-ad0c-a88ee763bb76.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/39ccb299-ee99-4dd1-b8b4-2f9ec9495cb4.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/How-HTTPS-Works.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/2017-06-11-ca.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/86e6a91d-a285-447a-9345-c5484b8d0c47.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/af198da1-2480-4043-b07f-a3b91a88b815.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e3f1657c-80fc-4dfa-9643-bf51abd201c6.png">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/_u4E0B_u8F7D.png">
 <meta property="article:published_time" content="2021-09-21T04:03:34.000Z">
-<meta property="article:modified_time" content="2023-10-18T07:51:34.895Z">
+<meta property="article:modified_time" content="2023-10-19T00:34:39.089Z">
 <meta property="article:author" content="ssubin">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary_large_image">
@@ -1028,7 +1015,7 @@
 <li>服务器响应HTTP请求<br>接收到HTTP请求之后，就轮到负载均衡登场了，它位于网站的最前端，把短时间内较高的访问量分摊到不同机器上处理。负载均衡方案有软件、硬件两种。软件方案常见的就是NGINX了。<br>Nginx的作用主要有两个1，处理静态文件请求，2转发请求给后端服务器。然后后端服务器查询数据库返回数据。数据返回给客户端仍然通过HTTP协议传输。<br>HTTP响应报文主要由状态行、响应头部、空行以及响应数据组成。</li>
 <li>浏览器解析<br>浏览器拿到index.html文件后，就开始解析其中的html代码，遇到js&#x2F;css&#x2F;image等静态资源时，就向服务器端去请求下载（会使用多线程下载，每个浏览器的线程数不一样），这个时候就用上keep-alive特性了，建立一次HTTP连接，可以请求多个资源，下载资源的顺序就是按照代码里的顺序，但是由于每个资源大小不一样，而浏览器又多线程请求请求资源，所以从下图看出，这里显示的顺序并不一定是代码里面的顺序。<br>浏览器在请求静态资源时（在未过期的情况下），向服务器端发起一个http请求（询问自从上一次修改时间到现在有没有对资源进行修改），如果服务器端返回304状态码（告诉浏览器服务器端没有修改），那么浏览器会直接读取本地的该资源的缓存文件。</li>
 <li>浏览器进行页面渲染<br>最后，浏览器利用自己内部的工作机制，把请求的静态资源和html代码进行渲染，渲染之后呈现给用户，浏览器是一个边解析边渲染的过程。<br>首先浏览器解析HTML文件构建DOM树，然后解析CSS文件构建渲染树，等到渲染树构建完成后，浏览器开始布局渲染树并将其绘制到屏幕上。</li>
-<li>服务器关闭TCP连接<br>一般情况下，一旦Web服务器向浏览器发送了请求数据，它就要关闭TCP连接。而关闭TCP连接就需要进行<strong>四次挥手</strong>。<br>中断连接端可以是客户端，也可以是服务器端。<br>Power by <a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes">CS-NOTES</a></li>
+<li>服务器关闭TCP连接<br>一般情况下，一旦Web服务器向浏览器发送了请求数据，它就要关闭TCP连接。而关闭TCP连接就需要进行<strong>四次挥手</strong>。<br>中断连接端可以是客户端，也可以是服务器端。<br>Powered by <a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes">CS-NOTES</a></li>
 </ol>
 
                 
