@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>SDN</title>
+    <link href="/2023/10/21/SDN/"/>
+    <url>/2023/10/21/SDN/</url>
+    
+    <content type="html"><![CDATA[<h1 id="什么是-SDN"><a href="#什么是-SDN" class="headerlink" title="什么是 SDN"></a>什么是 SDN</h1><p>软件定义网络<code>Software-defined Networking，简称SDN</code>技术是一种网络管理方法，它支持动态可编程的网络配置，提高了网络性能和管理效率，使网络服务能够像云计算一样提供灵活的定制能力。SDN 将网络设备的转发面与控制面解耦，通过控制器负责网络设备的管理、网络业务的编排和业务流量的调度，具有成本低、集中管理、灵活调度等优点。</p><h1 id="为什么需要-SDN"><a href="#为什么需要-SDN" class="headerlink" title="为什么需要 SDN"></a>为什么需要 SDN</h1><h2 id="传统网络的局限"><a href="#传统网络的局限" class="headerlink" title="传统网络的局限"></a>传统网络的局限</h2><p>传统网络是一个分布式的网络，在二层网络中，设备通过广播的方式传递设备间的可达信息。在三层网络中，设备间通过标准路由协议传递拓扑信息。这些模式要求每台设备必须使用相同的网络协议，保证各厂商的设备可以实现相互通信。随着业务的飞速发展，用户对网络的需求日新月异，一旦原有的基础网络无法满足新需求，就需要上升到协议制定与修改的层面，这样就会导致网络设备升级十分缓慢。</p><p>传统网络为了适应不同的需求和场景，发展也越来越复杂。部署一个传统网络往往需要使用到很多协议，由于标准协议中往往存在一些未明确的地方，导致各厂商的实现有差异。</p><p>传统网络以单台设备为单位，以命令行的方式进行管理。网络管理和业务调度时效率低下，运维成本高。</p><h2 id="SDN-的技术路线"><a href="#SDN-的技术路线" class="headerlink" title="SDN 的技术路线"></a>SDN 的技术路线</h2><p>为了解决传统网络发展滞后、运维成本高的问题，服务提供商开始探索新的网络架构，希望能够将控制面（操作系统和各种软件）与硬件解耦，实现底层操作系统、基础软件协议以及增值业务软件的开源自研，这就诞生了 SDN 技术。</p><p>在传统网络中，网络设备可以分为管理面、控制面和转发面。管理面负责业务的编排和策略的制定，控制面负责操作系统的运行以及各种算法的运算，转发面负责数据包的转发和接收。SDN 的理念是将网络设备的控制和转发功能解耦，使网络设备的控制面可直接编程，将网络服务从底层硬件设备中抽象出来。SDN 架构与传统网络架构的对比如下图所示。</p><p><img src="/img/SDN/%E4%BC%A0%E7%BB%9F%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E4%B8%8ESDN%E6%9E%B6%E6%9E%84%E5%AF%B9%E6%AF%94.png" alt="传统网络架构与SDN架构对比"></p><p>经典的 SDN 技术路线强调控制面的剥离，希望能够将网络设备变为白盒设备，实现网络功能的自定义。</p><p>但在 SDN 的发展过程中，由于底层协议的复杂性、软件开发投入等多方面原因，厂商逐渐转向了以自动化运维为主要目标，弱化控制面剥离的 SDN 技术路线。厂商们主张将操作系统以及大部分的软件仍放在硬件设备上进行，保留原有的网络设备形态，通过控制器实现与硬件设备、与网络配置管理工具的对接，由控制器在管理面的维度完成对硬件设备的统一管理和业务编排。下图为两种 SDN 技术路线的对比，经典的 SDN 技术路线又可以称为软件 SDN，而弱化控制面剥离的 SDN 技术路线可以称为硬件 SDN。</p><p><img src="/img/SDN/%E8%BD%AF%E4%BB%B6SDN%E4%B8%8E%E7%A1%AC%E4%BB%B6SDN%E5%AF%B9%E6%AF%94.png" alt="软件SDN与硬件SDN对比"></p><h1 id="SDN-架构"><a href="#SDN-架构" class="headerlink" title="SDN 架构"></a>SDN 架构</h1><p>SDN 架构可分为基础设施层、控制层和应用层。</p><ul><li>基础设施层：主要为转发设备，实现转发功能，例如数据中心交换机。</li><li>控制层：由 SDN 控制软件组成，可通过标准化协议与转发设备进行通信，实现对基础设施层的控制。</li><li>应用层：常见的有基于<code>OpenStack</code>架构的云平台。另外，也可以基于<code>OpenStack</code>构建用户自己的云管理平台。</li></ul><p>SDN 使用北向和南向应用程序接口（API）来进行层与层之间的通信，分为北向 API 和南向 API。北向 API 负责应用层和控制层之间的通信，南向 API 负责基础设施层和控制层之间的通信。</p><p><img src="/img/SDN/SDN%E6%9E%B6%E6%9E%84.png" alt="SDN架构"></p><h1 id="SDN-的优点"><a href="#SDN-的优点" class="headerlink" title="SDN 的优点"></a>SDN 的优点</h1><p>在当前主流的 SDN 架构中，保留了传统硬件设备上的操作系统和基础的协议功能，通过控制器收集整个网络中的设备信息，具有如下优点：</p><ul><li><p>网络可编程</p><p>网络设备提供应用编程接口（API），使得开发和管理人员能够通过编程语言向网络设备发送指令。网络工程师可以使用脚本自动化创建和分配任务，收集网络统计信息。将基于 CLI 与<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/SNMP.html">SNMP</a>的封装脚本变为实实在在的可编程对象，提供了更丰富的功能。</p></li><li><p>网络抽象化</p><p>控制器作为中间层，通过南北向 API 接口与网络设备和应用程序进行交互，将底层的硬件设备抽象为虚拟化的资源池，应用和服务不再与硬件紧密耦合。</p></li><li><p>降低成本</p><p>保留了原有的网络设备，硬件设备仍然具备管理、控制、转发的全部功能，方便进行整网的改造，无需进行大规模的搬迁。控制器的引入将人工配置转变为机器配置，提升运维效率，降低运维成本。</p></li><li><p>业务灵活调度</p><p>传统的硬件设备在网络中无法进行灵活的负载分担，最优路由上往往承担着最重的转发任务，即使 QoS、流控等功能缓解了这一问题，但流量的调度仍然强依赖于管理员对单台设备的配置，因此我们可以将传统的硬件设备看作是一种孤岛式的、分布式的管理模式。SDN 在没有改变硬件设备整体逻辑的基础上，通过增加开放的南北向接口，实现了将计算机语言到配置命令行的翻译，使界面式的管理、集中管理变成了可能，解决了传统网络业务调度不灵活的问题。</p></li><li><p>集中管理</p><p>传统网络设备的管理是分布式的，单台网络设备不感知整个网络的状态。网络管理员使用控制器来管理底层硬件设备，编排网络业务，分配网络资源和调整流量优先级。管理员可以直接感知整个网络的状态，及时调整带宽和优化策略，便于进行整网的管理。</p></li><li><p>开放性</p><p>SDN 架构支持供应商开发自己的生态系统，开放的 API 支持云编排、OSS&#x2F;BSS、SaaS 等多种应用程序，同时也可以通过<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/OpenFlow.html">Openflow</a>控制多个供应商的硬件。</p></li></ul><h1 id="SDN-与-NFV-有什么区别"><a href="#SDN-与-NFV-有什么区别" class="headerlink" title="SDN 与 NFV 有什么区别"></a>SDN 与 NFV 有什么区别</h1><p><a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/NFV.html">NFV</a>也是一种网络架构，它将传统物理设备的网络功能封装成独立的模块化软件，通过在硬件设备上运行不同的模块化软件，在单一硬件设备上实现多样化的网络功能。</p><p>SDN 和 NFV 的相似之处主要体现在如下方面：</p><ul><li>都以实现网络虚拟化为目标，实现物理设备的资源池化。</li><li>都提升了网络管理和业务编排效率。</li><li>都希望通过界面操作或者编程语言来进行网络编排。</li></ul><p>SDN 和 NFV 的不同之处参见下图。</p><p><img src="/img/SDN/NFV%E4%B8%8ESDN%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C.png" alt="NFV与SDN有什么不同"></p><p>SDN 抽象物理网络资源（交换机、路由器等），并将决策转移到虚拟网络控制平面。控制平面决定将流量发送到哪里，而硬件继续引导和处理流量，无需依赖标准的硬件设备。NFV 的目标是将所有物理网络资源进行虚拟化，允许网络在不添加更多设备的情况下增长，这依赖于标准的硬件设备。</p><p>其实经典 SDN 架构也将硬件与软件解耦作为目标，但在实现过程中由于软件研发成本、设备替换等原因的影响，现行的 SDN 方案弱化了控制面的分离，仅以网络自动化运维为目标。</p><h1 id="SDN-的未来与挑战"><a href="#SDN-的未来与挑战" class="headerlink" title="SDN 的未来与挑战"></a>SDN 的未来与挑战</h1><p>在数据中心领域，大多数大规模数据中心已经采用扁平化架构，这给网络设备的管理带来了极大的挑战。SDN 带来的自动化运维、集中管理在数据中心的自动化调配以及扩容中有极大的应用空间。</p><p>在视频领域，由于 SDN 支持数据流的实时调配，使得网络能够承载更多的流量。</p><p>在机器学习和人工智能领域，SDN 也会受到运营需求和软件创新的影响，提供更丰富、更新潮的网络体验。</p><p>在未来的网络自动驾驶（ADN）中，SDN 架构也能够发挥重要作用。</p><p>SDN 并非没有缺点，与其他 IT 产品一样，SDN 存在安全、扩展以及缺乏广泛合作、缺乏生态的问题。</p><ul><li><p>集中管理的安全风险</p><p>虽然集中管理十分方便，但这也是一种安全风险。集中管理的单节点被攻击，整个网络可能都会受到影响。</p></li><li><p>SDN 控制器的瓶颈</p><p>对于软件完全从硬件上分离的 SDN 思路来说，控制器的软件开发难度、控制器的计算压力都是巨大的挑战。</p></li><li><p>北向 API 缺乏统一标准</p><p>缺乏标准的北向 API 导致供应商提供的接口不统一，应用程序开发困难上升，同一组开发人员必须同时开发与不同控制器的相互操作。</p></li></ul><h1 id="华为-SDN-解决方案"><a href="#华为-SDN-解决方案" class="headerlink" title="华为 SDN 解决方案"></a>华为 SDN 解决方案</h1><p>目前华为解决方案通过 iMaster-NCE 实现对网络设备的统一管理和自动化运维，为 IT 应用和云平台提供可自动运维的网络服务。面向园区网络提出了 CloudCampus 解决方案，面向数据中心网络提出了<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/CloudFabric.html">CloudFabric</a>解决方案，面向无线网络提出了<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/SD-WAN.html">SD-WAN</a>解决方案。</p><p><a href="https://info.support.huawei.com/network/ptmngsys/Web/CloudCampus/solutionDocumentation.html">CloudCampus 智简园区网络解决方案</a>：华为 CloudCampus 解决方案基于 ADN（自动驾驶网络）的理念和架构，应用 5G、<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/WiFi+6.html">Wi-Fi 6</a>、SDN、云和智能等技术，为各组织构建满足一网接入全千兆，一跳上云智体验，统一管理新运维的园区网络，可提升数字化运营效率，并综合性地降低园区网络 CAPEX 和 OPEX。</p><p><a href="https://info.support.huawei.com/network/ptmngsys/Web/CloudFabric/solutionDocumentation.html">CloudFabric 数据中心网络解决方案</a>：CloudFabric 是华为推出的数据中心网络 SDN 解决方案，该方案由华为数据中心 CloudEngine 系列交换机配合华为数据中心控制器 iMaster NCE-Fabric、智能网络分析平台 iMaster NCE-FabricInsight 以及<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/HiSec.html">安全解决方案</a><a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/HiSec.html">HiSec</a>，为客户提供覆盖数据中心网络的“规划建设 → 业务发放 → 运维监控 → 变更优化”全生命周期的极简运营体验；对网络故障实现发现、分析、隔离的智能闭环；同时 CloudFabric 还能满足数据中心全以太网络演进，可融合计算专网与存储专网，实现以太零丢包，提升计算和存储性能。</p><p><a href="https://info.support.huawei.com/network/ptmngsys/Web/sdwansolution/zh/index.html#local_tool">SD-WAN 解决方案</a>：针对企业网络面临的 WAN 封闭架构、业务体验难保障、业务部署和运维困难的问题，华为 SD-WAN 解决方案为企业提供分支与分支、分支与数据中心、分支与云之间的全场景互联，通过应用级<a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/%E6%99%BA%E8%83%BD%E7%AD%96%E7%95%A5%E8%B7%AF%E7%94%B1.html">智能选路</a>、智能加速、智能运维，构建更好的业务体验，重塑 WAN 互联全流程的业务体验。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol><li><a href="https://info.support.huawei.com/info-finder/zh/enterprise/index">华为 Info-Finder</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络</category>
+      
+      <category>运营商</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网络</tag>
+      
+      <tag>运营商</tag>
+      
+      <tag>SDN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>VLAN</title>
     <link href="/2023/10/18/VLAN/"/>
     <url>/2023/10/18/VLAN/</url>
