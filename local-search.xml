@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Alist网络映射至本地硬盘</title>
+    <link href="/2024/07/31/Alist%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84%E8%87%B3%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%9B%98/"/>
+    <url>/2024/07/31/Alist%E7%BD%91%E7%BB%9C%E6%98%A0%E5%B0%84%E8%87%B3%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%9B%98/</url>
+    
+    <content type="html"><![CDATA[<p>由于大部分Alist部署在<code>http</code>服务器上或者本地，Windows系统网络映射默认为<code>https</code>协议，导致Webdav链接失败。<br>为解决此问题，进入注册表 <code>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</code> ，修改<code>BasicAuthLevel</code>值为2，即可使得Windows系统网络映射支持<code>http</code>和<code>https</code>模式。（修改后需进入<code>服务</code>重启<code>WebClient</code>）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网盘</tag>
+      
+      <tag>Alist</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>无线专业知识</title>
     <link href="/2024/03/15/%E6%97%A0%E7%BA%BF%E4%B8%93%E4%B8%9A%E7%9F%A5%E8%AF%86/"/>
     <url>/2024/03/15/%E6%97%A0%E7%BA%BF%E4%B8%93%E4%B8%9A%E7%9F%A5%E8%AF%86/</url>
